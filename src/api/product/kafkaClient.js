@@ -1,13 +1,12 @@
 var kafka = require('kafka-node');
-//var kafkaServerHost ='localhost';
-//var kafkaServerPort =9092;
+var kafkaServerHost ='localhost';
+var kafkaServerPort =9092;
 var Producer = kafka.Producer;
 //var client = new kafka.Client("localhost:2181");
-var topic = "product";
 
 
 console.log("Kafka Producer is running");
-const client = new kafka.Client("localhost:2181", "my-client-id", {
+const client = new kafka.Client("144.21.68.231:9092", "my-client-id", {
     sessionTimeout: 300,
     spinDelay: 100,
     retries: 2
@@ -25,6 +24,7 @@ producer.on("error", function(error) {
 
 exports.sendMessageKafka = function (messageKafka) {
   	console.log("Producer is starting");
+	console.log(messageKafka);
   	//producer = new Producer(client);
 
 	/*const event = {
@@ -34,13 +34,13 @@ exports.sendMessageKafka = function (messageKafka) {
             data: 'test'
         };*/
 
-        //const buffer = new Buffer.from(JSON.stringify(event));
-	const buffer = new Buffer.from("from windows");
+        const buffer = new Buffer.from(JSON.stringify(messageKafka));
+	//const buffer = new Buffer.from("Test from nodejs");
 
   	// Create a new payload
         const record = [
             {
-                topic: "product",
+                topic: "customers",
                 messages: buffer,
                 attributes: 1 /* Use GZip compression for the payload */
             }
@@ -54,25 +54,3 @@ exports.sendMessageKafka = function (messageKafka) {
   	console.log("Producer finished");
 
 }//sendMessageKafka
-/*
-exports.getMessageKafka = function () {
-	//var client = new kafka.Client("localhost:9092/");
-	var Consumer = kafka.Consumer;
-	console.log("Consumer is starting");
-	consumer = new Consumer(
-         	client,
-        	[
-              		{ topic: 'test', partition: 0, offset: 0 }
-        	],
-        	{ fromOffset: 'earliest' }
-    	);
-
-	consumer.on('message', function (message) {
-  		console.log("received message Client", message);
-	});
-
-	consumer.on('error', function (err) {
-    		console.log('ERROR: ' + err.toString());
-	});
-
-}//getMessageKafka*/

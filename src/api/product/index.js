@@ -7,7 +7,7 @@ var kafkaConsumer = require("./kafkaConsumer.js");
 const MongoClient = require('mongodb').MongoClient;
 
 // To test locally
-// const mongoUrl = "mongodb://localhost:27017/";
+//const mongoUrl = "mongodb://localhost:27017/";
 
 // To test using Docker
 const mongoUrl = "mongodb://product-db:27017/";
