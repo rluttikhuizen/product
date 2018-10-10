@@ -1,0 +1,21 @@
+{
+  "name": "product",
+  "version": "1.0.0",
+  "description": "Product project for hackathlon",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "nodemon index.js"
+  },
+  "author": "Product team",
+  "license": "ISC",
+  "dependencies": {
+    "avsc": "^5.4.5",
+    "express": "^4.16.3",
+    "kafka": "^0.2.3",
+    "kafka-node": "^2.6.1",
+    "mongodb": "^3.1.7",
+    "nodemon": "^1.18.4",
+    "npm": "^6.4.1"
+  }
+}
