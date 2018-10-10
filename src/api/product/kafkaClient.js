@@ -6,6 +6,8 @@ var Producer = kafka.Producer;
 
 
 console.log("Kafka Producer is running");
+
+console.log("Starting Kafka Client on 144.21.68.231:9092");
 const client = new kafka.Client("144.21.68.231:9092", "my-client-id", {
     sessionTimeout: 300,
     spinDelay: 100,
